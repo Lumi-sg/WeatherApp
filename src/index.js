@@ -1,6 +1,7 @@
 import css from "./styles.css";
 import initHTML from "./modules/initHTML";
 import getWeatherData from "./modules/getWeatherData";
+import updateCurrent from "./modules/updateCurrent";
 
 initHTML();
 
@@ -10,6 +11,7 @@ userForm.addEventListener("submit", async () => {
 	const userInput = userForm.elements["location"].value;
 
 	event.preventDefault();
-	const country = await getWeatherData(userInput);
-	console.log(country.location.country);
+	const weatherData = await getWeatherData(userInput);
+	updateCurrent(weatherData);
+	console.log(weatherData);
 });
