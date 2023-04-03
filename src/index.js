@@ -5,6 +5,12 @@ import updateCurrent from "./modules/updateCurrent";
 
 initHTML();
 
+window.onload = async () => {
+	const DEFAULT_WEATHER = await getWeatherData("Toronto");
+	console.log(DEFAULT_WEATHER);
+	updateCurrent(DEFAULT_WEATHER);
+};
+
 const userForm = document.querySelector(".location-form");
 
 userForm.addEventListener("submit", async () => {
@@ -16,7 +22,7 @@ userForm.addEventListener("submit", async () => {
 	const location = (document.querySelector(".location").textContent = "...Loading");
 	event.preventDefault();
 	const weatherData = await getWeatherData(userInput);
-	document.body.style.backgroundImage = "";
 	updateCurrent(weatherData);
+	document.body.style.backgroundImage = "";
 	console.log(weatherData);
 });
