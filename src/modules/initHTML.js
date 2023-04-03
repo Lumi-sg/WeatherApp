@@ -1,4 +1,4 @@
-const initHTML = () => {
+export default function initHTML() {
 	// create elements
 	const body = document.querySelector("body");
 	const container = document.createElement("div");
@@ -31,8 +31,10 @@ const initHTML = () => {
 	input.setAttribute("type", "text");
 	input.setAttribute("id", "location-input");
 	input.setAttribute("name", "location");
+	input.setAttribute("placeholder", "Enter your location");
 	button.setAttribute("type", "submit");
-	button.textContent = "Search";
+	button.textContent = "Go!";
+	button.classList.add("submit");
 	currentConditions.setAttribute("id", "current-conditions");
 	currentIcon.setAttribute("id", "current-icon");
 	currentTemp.setAttribute("id", "current-temp");
@@ -54,6 +56,7 @@ const initHTML = () => {
 	form.appendChild(label);
 	form.appendChild(input);
 	form.appendChild(button);
+	form.classList.add("location-form");
 	currentConditions.appendChild(currentIcon);
 	currentConditions.appendChild(currentTemp);
 	currentConditions.appendChild(currentCondition);
@@ -75,6 +78,4 @@ const initHTML = () => {
 
 	// add container to the page
 	body.appendChild(container);
-};
-
-export { initHTML };
+}
