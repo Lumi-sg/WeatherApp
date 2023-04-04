@@ -19,7 +19,8 @@ const userForm = document.querySelector(".location-form");
 userForm.addEventListener("submit", async () => {
 	event.preventDefault();
 	const userInput = userForm.elements["location"].value;
-	if (userInput.length >= 25) {
+	console.log(userInput);
+	if (userInput.length >= 25 || userInput.length === 0) {
 		const location = (document.querySelector(".location").textContent =
 			"Please enter a valid location");
 		const locationInput = document.getElementById("location-input");
