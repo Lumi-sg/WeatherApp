@@ -9,6 +9,7 @@ export default async function getWeatherData(userInput) {
 			}
 		);
 		const data = await response.json();
+		console.log("getWeatherData.js: Data fetched successfully");
 		return data;
 	} catch (error) {
 		console.log(error);
