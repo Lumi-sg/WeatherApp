@@ -18,17 +18,24 @@ window.onload = async () => {
 const userForm = document.querySelector(".location-form");
 const location = userForm.elements["location"];
 
-userForm.addEventListener("submit", async (event) => {
+userForm.addEventListener("submit", async () => {
 	event.preventDefault();
+	const userInput = userForm.elements["location"].value;
+
+	if (!userInput.trim()) {
+		alert("Please enter a location");
+		return;
+	}
+
+	if (!isNaN(userInput)) {
+		alert("Please enter a valid location name");
+		return;
+	}
 
 	loadTheToad();
 
-	try {
-		const weatherData = await getWeatherData(location.value);
-		updateCurrent(weatherData);
-	} catch (error) {
-		console.log(error);
-	}
+	const weatherData = await getWeatherData(userInput);
+	updateCurrent(weatherData);
 
 	document.body.style.backgroundImage = "";
 });
