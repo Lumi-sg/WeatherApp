@@ -7,5 +7,7 @@ export default async function updateCurrent(weatherData) {
 		weatherData.current.temp_c + "°C");
 	const currentCondition = (document.querySelector("#current-condition").textContent =
 		weatherData.current.condition.text);
+	const locationInput = document.getElementById("location-input");
+	locationInput.value = "";
 	console.log("upDateCurrent.js: DOM updated");
 }

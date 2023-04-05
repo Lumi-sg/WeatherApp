@@ -9,8 +9,13 @@ export default async function getWeatherData(userInput) {
 			}
 		);
 		const data = await response.json();
-		console.log("getWeatherData.js: Data fetched successfully");
-		return data;
+		if (response.ok) {
+			console.log("getWeatherData.js: Data fetched successfully");
+			return data;
+		} else {
+			const location = (document.querySelector(".location").textContent =
+				"Please enter a valid location");
+		}
 	} catch (error) {
 		console.log(error);
 	}

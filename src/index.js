@@ -2,6 +2,7 @@ import css from "./styles.css";
 import initHTML from "./modules/initHTML";
 import getWeatherData from "./modules/getWeatherData";
 import updateCurrent from "./modules/updateCurrent";
+import loadTheToad from "./modules/loadTheToad";
 
 initHTML();
 
@@ -19,32 +20,12 @@ const userForm = document.querySelector(".location-form");
 userForm.addEventListener("submit", async () => {
 	event.preventDefault();
 	const userInput = userForm.elements["location"].value;
-	console.log(userInput);
-	if (userInput.length >= 25 || userInput.length === 0) {
-		const location = (document.querySelector(".location").textContent =
-			"Please enter a valid location");
-		const locationInput = document.getElementById("location-input");
-		locationInput.value = "";
-	} else {
-		try {
-			const hypnogod = new Image();
-			hypnogod.src = "https://media.tenor.com/r5FOkTjCCfMAAAAC/hypnotoad-futurama.gif";
-			document.body.style.backgroundImage = "url('" + hypnogod.src + "')";
 
-			const location = (document.querySelector(".location").textContent = "...Loading");
-			const weatherData = await getWeatherData(userInput);
-			updateCurrent(weatherData);
-			if (weatherData === "[object Object]") {
-				console.log(`TEST ${weatherData}`);
-				const location = (document.querySelector(".location").textContent =
-					"Please enter a valid location");
-			} else {
-				document.body.style.backgroundImage = "";
-				const location = (document.querySelector(".location").textContent =
-					"Please enter a valid location");
-			}
-		} catch (error) {
-			console.log(error);
-		}
-	}
+	loadTheToad();
+
+
+	const weatherData = await getWeatherData(userInput);
+	updateCurrent(weatherData);
+
+	document.body.style.backgroundImage = "";
 });
