@@ -16,7 +16,6 @@ window.onload = async () => {
 };
 
 const userForm = document.querySelector(".location-form");
-const location = userForm.elements["location"];
 
 userForm.addEventListener("submit", async () => {
 	event.preventDefault();
