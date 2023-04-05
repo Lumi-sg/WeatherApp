@@ -5,14 +5,15 @@ export default async function getCountryFlag(weatherData) {
 				weatherData.location.country
 			)}`
 		);
-		const data = await response.json();
-		const countryEmoji = data[0].flag;
+
 		if (response.ok) {
+			const data = await response.json();
+			const countryEmoji = data[0].flag;
 			return countryEmoji;
 		} else {
-			console.log("flag api call failed: " + response);
+			console.log("flag api call failed");
 		}
 	} catch (error) {
-		console.log(error);
+		throw new Error(`Failed to fetch flag for ${weatherData.location.country}: ${error}`);
 	}
 }

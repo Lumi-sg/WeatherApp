@@ -1,7 +1,7 @@
 import css from "./styles.css";
 import initHTML from "./modules/initHTML";
 import getWeatherData from "./modules/getWeatherData";
-import updateCurrent from "./modules/updateCurrent";
+import updateCurrent from "./modules/updateDOM";
 import loadTheToad from "./modules/loadTheToad";
 
 initHTML();
@@ -22,7 +22,6 @@ userForm.addEventListener("submit", async () => {
 	const userInput = userForm.elements["location"].value;
 
 	loadTheToad();
-
 
 	const weatherData = await getWeatherData(userInput);
 	updateCurrent(weatherData);
