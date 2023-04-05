@@ -10,13 +10,11 @@ export default async function getWeatherData(userInput) {
 		);
 		const data = await response.json();
 		if (response.ok) {
-			console.log("getWeatherData.js: Data fetched successfully");
 			return data;
 		} else {
-			const location = (document.querySelector(".location").textContent =
-				"Please enter a valid location");
+			throw new Error("Failed to fetch weather data");
 		}
 	} catch (error) {
-		console.log(error);
+		throw new Error("Failed to fetch weather data");
 	}
 }

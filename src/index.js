@@ -16,15 +16,19 @@ window.onload = async () => {
 };
 
 const userForm = document.querySelector(".location-form");
+const location = userForm.elements["location"];
 
-userForm.addEventListener("submit", async () => {
+userForm.addEventListener("submit", async (event) => {
 	event.preventDefault();
-	const userInput = userForm.elements["location"].value;
 
 	loadTheToad();
 
-	const weatherData = await getWeatherData(userInput);
-	updateCurrent(weatherData);
+	try {
+		const weatherData = await getWeatherData(location.value);
+		updateCurrent(weatherData);
+	} catch (error) {
+		console.log(error);
+	}
 
 	document.body.style.backgroundImage = "";
 });
