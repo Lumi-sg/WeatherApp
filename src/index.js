@@ -28,17 +28,23 @@ userForm.addEventListener("submit", async () => {
 	} else {
 		try {
 			const hypnogod = new Image();
-
 			hypnogod.src = "https://media.tenor.com/r5FOkTjCCfMAAAAC/hypnotoad-futurama.gif";
 			document.body.style.backgroundImage = "url('" + hypnogod.src + "')";
+
 			const location = (document.querySelector(".location").textContent = "...Loading");
 			const weatherData = await getWeatherData(userInput);
 			updateCurrent(weatherData);
-			document.body.style.backgroundImage = "";
+			if (weatherData === "[object Object]") {
+				console.log(`TEST ${weatherData}`);
+				const location = (document.querySelector(".location").textContent =
+					"Please enter a valid location");
+			} else {
+				document.body.style.backgroundImage = "";
+				const location = (document.querySelector(".location").textContent =
+					"Please enter a valid location");
+			}
 		} catch (error) {
 			console.log(error);
-			const location = (document.querySelector(".location").textContent =
-				"Please enter a valid location");
 		}
 	}
 });
