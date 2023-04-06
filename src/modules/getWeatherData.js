@@ -15,6 +15,9 @@ export default async function getWeatherData(userInput) {
 			throw new Error("Failed to fetch weather data");
 		}
 	} catch (error) {
+		document.body.style.backgroundImage = "";
+		document.querySelector(".location").textContent = "Please enter a valid location name";
+		const locationInput = (document.getElementById("location-input").value = "");
 		throw new Error("Failed to fetch weather data");
 	}
 }
